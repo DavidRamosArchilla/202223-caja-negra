@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import com.binarytree.*;
 
+
 public class PruebasConstructor {
     private final BinaryTree<String> b = new BinaryTree<String>("23");
 
