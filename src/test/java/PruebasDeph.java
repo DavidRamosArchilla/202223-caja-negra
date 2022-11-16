@@ -44,4 +44,8 @@ public class PruebasDeph {
             n = b.insert("2" + (i+1), n,i%2==0);
         }
     }
+
+
+
+
 }
