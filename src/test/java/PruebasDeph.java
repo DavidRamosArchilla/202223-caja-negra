@@ -8,10 +8,12 @@ import org.junit.jupiter.api.Test;
 
 public class PruebasDeph {
     private BinaryTree<String> b;
+    private Node<String> root;
 
     @BeforeEach
     public void setUp(){
-        b = new BinaryTree<String>("23");
+        b = new BinaryTree<String>("20");
+        root = b.getRoot();
     }
 
     @Test
@@ -20,18 +22,26 @@ public class PruebasDeph {
     }
     @Test
     public void testDepth2(){
-        b.insert("24", b.getRoot(), true);
-        Assertions.assertEquals(b.depth(), 1);
+        addNodos(3, root);
+        Assertions.assertEquals(b.depth(), 3);
     }
     @Test
     public void testDepth3(){
-        Node<String> n = b.insert("24", b.getRoot(), true);
+        Node<String> n = b.insert("24", root, true);
         Assertions.assertEquals(b.depth(n), 0);
     }
     @Test
     public void testDepth4(){
-        Node<String> n = b.insert("24", b.getRoot(), true);
-        b.insert("25", n, true);
-        Assertions.assertEquals(b.depth(n), 1);
+        Node<String> n = b.insert("24", root, true);
+//        b.insert("25", n, true);
+        addNodos(3, n);
+        Assertions.assertEquals(b.depth(n), 3);
+    }
+
+    private void addNodos(int cantidad, Node<String> inicio){
+        Node<String> n = inicio;
+        for(int i=0;i<cantidad;i++){
+            n = b.insert("2" + (i+1), n,i%2==0);
+        }
     }
 }
